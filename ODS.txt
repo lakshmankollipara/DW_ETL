@@ -1,0 +1,97 @@
+It is a concept we implement in DWHsing where we use it to load data from different kinds of sources before loading DWH. Staging contains only current cleaned,profiled data whereas DWH contains all historical cleaned,profiled data.
+
+Main purpose is we cannot compare source format data with DWH directly as source data will not be a proper cleaned data which may not match with cleaned data stored in DWH. So, first we clean all source data and load temporarly to  staging from where we comapre with DWH using SCDs.
+
+
+ 
+Operational Data Store (ODS)
+
+======================
+
+Operational Data Store (ODS) is layer of repository that resides between a data warehouse and the source system. The current, detailed data from disparate source systems is integrated, grouped subject areas wise in the ODS. The ODS is updated more frequently than a data warehouse. The updates happen shortly after a source system data changes.  
+
+
+
+ 
+Difference between ODS and DWH
+
+========================= 
+
+ 
+One of the key challenges in a data warehouse is to extract data from multiple non-integrated systems to a defined single space, all the while ensuring linkages between data elements such as customer, transaction, account and other dimensional data. By providing a foundation to integrated operational results, the ODS easily helps resolve this challenge and is often regarded as a common link between banks’ operational systems and the data warehouse. However, it is always advisable to have a clear distinction between the ODS and the DWH decision systems. While the DWH should store only historical data, the ODS needs to be more current in nature. It should be designed to rapidly update data so as to provide snapshots in an online, real-time environment. 
+
+There is also a marked trend towards keeping both the ODS and warehouse in the same place as the interchangeability is very thin
+
+Often, to avoid investing in technology to develop an ODS, banks end up using the old warehouse for operational reporting requirements as well. However, it needs to be remembered that at the technology front, both the ODS and DWH need different architectures. While the ODS needs ‘update and record’ oriented functionality, the warehouse requires a ‘load and access’ oriented functionality.
+
+ 
+An important recent trend is of keeping some functionalities of a DWH in the ODS, such as summary or aggregated data for easy and fast query. Although it is very difficult to have both current and summary data stored in an ODS, this helps to meet quickly and easily, different requirements from the same place. However, as the ODS data gets regularly updated, it is important to realize that the accuracy of the summary data in an 
+
+ODS is only for the specific point when it is accessed. So compared to a DWH, the reconstruction of same balances in an ODS will be difficult. 
+
+Essentially, the ODS derives some of its essence from that of a data warehouse with certain key differences. An ODS can be defined as an application that enables any institution to meet its operational data analysis and processing needs. The key features of an ODS are as below:
+
+•          Subject oriented
+
+•          Integrated
+
+•          Volatile - updated data
+
+•          Near time or current time data
+
+ 
+Notably, it is the last two points that differentiate an ODS from a warehouse. 
+
+When we say an ODS needs to be subject oriented, it means that the basic design should cater to specific business areas or domains for easy access and analysis of data. It will be easier to store data in sub segments like customer, transaction and balance with an inter linkage between all the segments. That brings the requirement of using a common key for all data files to establish the linkage. Along with using the key, aggregation of data for certain time blocks as discussed above, it will also be helpful for easy and fast recovery of query results. 
+
+ 
+The following key functions are generally required for a successful ODS
+
+•          Converting data
+
+•          Selection of best data from multiple sources
+
+•          Decoding/encoding data
+
+•          Summarizing data
+
+•          Recalculating data
+
+•          Reformatting data and many more.
+
+ 
+Apart from changes in the structure of an ODS in terms of handling large volume volatile transactional data from multiple sources with a scope of aggregating them as well, there are also infrastructure related changes happening today. While the basic technology of loading and processing high volume data remains the same, when the system of records changes a little, the impact on the ODS can be very significant and has to be managed very carefully. Therefore, even if the system of records may comprise a very small portion of the system, it should be ensured that the underlying infrastructure is able to handle high volumes at all times. 
+
+How to start building an ODS
+
+It is advisable to start building a subject-oriented small ODS in the first place with customer centric activities and transactions. Later, with integration in mind, other subject areas can be added. 
+
+ 
+Conclusion
+
+======= 
+
+ 
+Although there are many similarities between a data warehouse and an ODS and it is often difficult to differentiate between them, there is a specific need for an ODS in banks today where large volume of data is required to be processed in a fast and accurate manner to support the operational data reporting and analytical needs of the organization. As ODS contains specific data required for a set of business users, it helps in reducing the time to source information and with the added functionality of summary or aggregated data, it will definitely be an important element in any large bank’s IT systems infrastructure.
+
+
+-----------------------------------
+
+Please find the questions mentioned below 
+
+1)Slowly changing dimension types 
+2)DML statement
+3)DDL statement 
+4)write a syntax to create database 
+5) differences between count(*) and count(column) 
+6) differences between union and union all 
+7) what is decode 
+8) what is NVL
+ 9) Arrange the values in ascending order 10,5,20,15,null 
+10)Primary and surrogate key 
+11)what is group by clause does? 
+12)what is difference between truncate and delete 
+13)what is difference between OLAP and OLTP ? 
+14)Architecture of Datawarehouse 
+15)how do you test the data validation from source as (flat file and xml) to staging tables. 
+16)what is shedule and time bound the mentioned above question asked in two rounds.all the best 
